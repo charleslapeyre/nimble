@@ -1,7 +1,9 @@
 class TweetsController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_tweet, only: [:show, :edit, :update]
 
   def index
+    @tweets = Tweet.all
   end
 
   def show
@@ -26,7 +28,20 @@ class TweetsController < ApplicationController
   def edit
   end
 
+  def update
+    if @tweet.update(tweet_params)
+      redirect_to @tweet, notice: 'Your tweet was updated!'
+    else
+      render :edit
+    end
+  end
+
   private
+
+  # with the before action, we're able to use the same method for show and edit
+  def set_tweet
+    @tweet = Tweet.find(params[:id])
+  end
 
   def tweet_params
     params.require(:tweet).permit(:message, :user_id)
