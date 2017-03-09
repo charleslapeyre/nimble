@@ -10,8 +10,11 @@
 
   <body>
     <div class="container-fluid">
-    <p id="notice"><%= notice %></p>
+    <div class="row">
+      <p id="notice"><%= notice %></p>
       <%= yield %>
+      <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, data: { confirm: 'Logout?' }, class: 'btn btn-danger' %>
+    </div>
     </div>
   </body>
 </html>
