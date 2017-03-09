@@ -1,0 +1,14 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <p>
+        <strong>Message: <%= @tweet.message %></strong>
+      </p>
+      <p>
+        <strong>User: <%= @tweet.user.username %></strong>
+      </p>
+      <%= link_to 'Edit Tweet', edit_tweet_path(@tweet), class: 'btn btn-default' %>
+      <%= link_to 'See all tweets', tweets_path, class: 'btn btn-default' %>
+    </div>
+  </div>
+</div>
